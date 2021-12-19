@@ -8,7 +8,7 @@ const Menu = () => {
         <Link to="/" className="Menu_navbar_button">
           Home
         </Link>
-        <Link to="detalle/:id" className="Menu_navbar_button">
+        <Link to={`detalle/${1}`} className="Menu_navbar_button">
           OneProduct
         </Link>
         <Link to="/About" className="Menu_navbar_button">
