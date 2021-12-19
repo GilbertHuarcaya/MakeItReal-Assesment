@@ -1,19 +1,34 @@
 import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { getProduct } from '../../services/products';
 
-const ProductCard = () => {
-  const params = useParams();
+const ProductDetail = () => {
+  const { productId } = useParams();
+  const [product, setProduct] = useState();
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const oneproduct = await getProduct(productId);
+      setProduct(oneproduct);
+    };
+    fetchProduct();
+  }, []);
 
   return (
-    <div className="ProductCard">
-      <h1 className="ProductCard_title">{}</h1>
-      <img src={} alt={} />
-      <div className="ProductCard_Link">
-        <Link to="detalle/{}" className="Menu_navbar_button">
-          Product Detail
-        </Link>
-      </div>
-    </div>
+    <main className="ProductDetail">
+      {product ? (
+        <div>
+          <h2>Price: ${product.price}</h2>
+          <img src={product.image} alt={product.title} />
+          <p>
+            {product.title}: {product.id}
+          </p>
+          <p>Description: {product.description}</p>
+        </div>
+      ) : (
+        <h1>Loading ...</h1>
+      )}
+    </main>
   );
 };
-
-export default ProductCard;
+export default ProductDetail;
