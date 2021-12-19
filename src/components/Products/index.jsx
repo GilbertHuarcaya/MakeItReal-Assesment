@@ -1,25 +1,20 @@
-import { useState, useEffect } from 'react';
 import ProductCard from '../ProductCard';
-import { getProducts } from '../../services/products';
+import { useStateProduct } from './Context';
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    getProducts().then((data) => setProducts(data));
-  }, []);
+  const { products } = useStateProduct();
 
   return (
     <div>
-      <nav>
-        {products.length > 0 ? (
-          products.map((product) => (
-            <ProductCard product={product} key={product.id} />
-          ))
-        ) : (
-          <h1>Loading ...</h1>
-        )}
-      </nav>
+      {products.length > 0 ? (
+        products.map((product) => (
+          <div key={product.id}>
+            <ProductCard product={product} />
+          </div>
+        ))
+      ) : (
+        <h1>Loading ...</h1>
+      )}
     </div>
   );
 };
