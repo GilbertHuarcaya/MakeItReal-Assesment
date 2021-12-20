@@ -1,0 +1,12 @@
+.Header {
+  text-align: center;
+  margin: 0 2rem;
+}
+@media screen and (min-width: 769px) {
+  .Header {
+    text-align: left;
+    position: relative;
+    height: 60px;
+    border-top: 0;
+  }
+}
