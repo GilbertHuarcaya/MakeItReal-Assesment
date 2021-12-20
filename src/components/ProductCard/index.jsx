@@ -1,47 +1,54 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Countdown from 'react-countdown';
+import './styles.scss';
 
-const Completionist = () => <span>You are good to go!</span>;
 const ProductCard = (props) => {
   const { product } = props;
+  const [linkGone, setLinkGone] = useState(false);
 
-  // Renderer callback with condition
-  const renderer = ({ hours, minutes, seconds, completed }) => {
-    if (completed) {
-      // Render a complete state
-      return <Completionist />;
-    }
-    // Render a countdown
+  const renderer = ({ hours, minutes, seconds }) => {
     return (
       <span>
-        {hours}:{minutes}:{seconds}
+        {hours > 9 ? null : 0}
+        {hours}:{minutes > 9 ? null : 0}
+        {minutes}:{seconds > 9 ? null : 0}
+        {seconds}
       </span>
     );
   };
-
   return (
     <div className="ProductCard">
-      <h1 className="ProductCard_title">{product.title}</h1>
-      <img
-        className="ProductCard_title_img"
-        src={product.image}
-        alt={product.title}
-      />
-      <p className="ProductCard_rating">
-        Rating: {product.rating.rate} from {product.rating.count} persons
-      </p>
-      <div className="ProductCard_countdown">
-        <Countdown
-          date={Date.now() + (Math.random() * (9 - 1) + 1) * 10000}
-          renderer={renderer}
+      <div className="ProductCard__photo">
+        <img
+          className="ProductCard__img"
+          src={product.image}
+          alt={product.title}
         />
       </div>
-      <div className="ProductCard_Link">
-        <Link to={`/detalle/${product.id}`} key={product.id}>
-          Detail of {product.title}
-        </Link>
-      </div>
+      <h3 className="ProductCard__title">{product.title}</h3>
+      {!linkGone ? (
+        <div className="ProductCard__countdown">
+          <Countdown
+            date={Date.now() + (Math.random() * (9 - 1) + 1) * 10000}
+            renderer={renderer}
+            onComplete={() => setLinkGone(true)}
+            className="ProductCard__countdown__active"
+          />
+          <Link to={`/detalle/${product.id}`} key={product.id}>
+            <button
+              type="button"
+              id={product.id}
+              className="ProductCard__button"
+            >
+              Details
+            </button>
+          </Link>
+        </div>
+      ) : (
+        <p className="ProductCard__countdown__finished">Out of stock!</p>
+      )}
     </div>
   );
 };
