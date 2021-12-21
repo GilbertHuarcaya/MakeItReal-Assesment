@@ -1,0 +1,67 @@
+.ProductDetail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem auto;
+  min-height: calc(100vh - 118px);
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    margin: 2rem;
+    min-width: 18rem;
+    box-shadow: 2px 2px 10px 10px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.15);
+
+    &__subtitle {
+      text-align: left;
+      font-size: 1rem;
+      margin: 0;
+      color: gray;
+    }
+    &__price {
+      text-align: center;
+    }
+    &__photo {
+      height: 20em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &__img {
+      max-width: 80%;
+      max-height: 100%;
+    }
+    &__name {
+      text-align: center;
+    }
+    &__description {
+      text-align: justify;
+    }
+
+    &__button {
+      background-color: lightblue;
+      font-size: 1.2rem;
+      padding: 0.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  }
+}
+@media screen and (min-width: 769px) {
+  .ProductDetail {
+    min-height: calc(100vh - 114px);
+
+    &__card {
+      width: 40rem;
+      box-shadow: 2px 2px 10px 10px rgba(0, 0, 0, 0.2);
+      background-color: rgba(255, 255, 255, 0.15);
+
+      &__photo {
+        height: 30rem;
+      }
+    }
+  }
+}
