@@ -33,10 +33,12 @@
       font-size: 1.5rem;
       margin: 7px;
       width: 100%;
+      transition: all 0.1s ease-out;
     }
 
     &__a:hover {
       font-weight: bold;
+      transition: all 0.1s ease-out;
     }
   }
 
