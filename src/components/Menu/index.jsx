@@ -29,11 +29,7 @@ const Menu = () => {
         <Link to="/" className="Menu__navbar__a" onClick={handlerMenu}>
           Home
         </Link>
-        {!pattern.test(urlactual) ? (
-          <p className="Menu__navbar__a" disabled>
-            Product
-          </p>
-        ) : (
+        {!pattern.test(urlactual) ? null : (
           <Link
             to={`/detalle${productLink}`}
             className="Menu__navbar__a"

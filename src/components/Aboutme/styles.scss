@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  min-height: calc(100vh - 66px);
+  min-height: calc(100vh - 100px);
 
   &__card {
     display: flex;
@@ -74,7 +74,7 @@
 
 @media screen and (min-width: 769px) {
   .About {
-    height: calc(100vh - 92px);
+    min-height: calc(100vh - 146px);
 
     &__title {
       text-align: center;
