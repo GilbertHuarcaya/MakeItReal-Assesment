@@ -16,16 +16,16 @@ const App = () => (
         <Route path="detalle" element={<Product />}>
           <Route path=":productId" element={<ProductDetail />} />
         </Route>
+        <Route path="About" element={<About />} />
+        <Route
+          path="*"
+          element={
+            <main style={{ padding: '1rem' }}>
+              <p>Theres nothing here!</p>
+            </main>
+          }
+        />
       </Route>
-      <Route path="About" element={<About />} />
-      <Route
-        path="*"
-        element={
-          <main style={{ padding: '1rem' }}>
-            <p>Theres nothing here!</p>
-          </main>
-        }
-      />
     </Routes>
   </BrowserRouter>
 );
