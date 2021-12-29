@@ -11,6 +11,7 @@ export const ProductProvider = ({ children, value = [] }) => {
 
   useEffect(() => {
     const fetchProducts = async () => {
+      localStorage.clear();
       const allproducts = await getProducts();
       setProducts(allproducts);
     };

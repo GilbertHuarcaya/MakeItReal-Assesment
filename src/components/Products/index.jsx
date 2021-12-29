@@ -8,7 +8,7 @@ const Products = () => {
 
   if (!localStorage.length && products) {
     products.forEach((product) => {
-      localStorage.setItem(product.id, Math.floor(Math.random() * 100) + 6);
+      localStorage.setItem(product.id, Math.floor(Math.random() * 100) + 60);
     });
   }
 
