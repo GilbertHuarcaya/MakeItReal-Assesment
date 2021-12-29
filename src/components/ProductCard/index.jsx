@@ -6,7 +6,7 @@ import './styles.scss';
 
 const ProductCard = (props) => {
   const { product } = props;
-  const [linkGone, setLinkGone] = useState(false);
+  const [count, setCount] = useState(Number(localStorage.getItem(product.id)));
 
   const renderer = ({ hours, minutes, seconds }) => {
     return (
@@ -18,6 +18,7 @@ const ProductCard = (props) => {
       </span>
     );
   };
+
   return (
     <div className="ProductCard">
       <div className="ProductCard__photo">
@@ -28,27 +29,24 @@ const ProductCard = (props) => {
         />
       </div>
       <h3 className="ProductCard__title">{product.title}</h3>
-      {!linkGone ? (
-        <div className="ProductCard__countdown">
-          <Countdown
-            date={Date.now() + (Math.random() * (9 - 1) + 1) * 10000}
-            renderer={renderer}
-            onComplete={() => setLinkGone(true)}
-            className="ProductCard__countdown__active"
-          />
-          <Link to={`/detalle/${product.id}`} key={product.id}>
-            <button
-              type="button"
-              id={product.id}
-              className="ProductCard__button"
-            >
-              Details
-            </button>
+      <div className="ProductCard__countdown">
+        <Countdown
+          date={Date.now() + count * 1000}
+          renderer={renderer}
+          onComplete={() => setCount(0)}
+        />
+        {count === 0 ? (
+          <p className="ProductCard__countdown__finished">Out of stock!</p>
+        ) : (
+          <Link
+            className="ProductCard__button"
+            id={product.id}
+            to={`/detalle/${product.id}`}
+          >
+            Details
           </Link>
-        </div>
-      ) : (
-        <p className="ProductCard__countdown__finished">Out of stock!</p>
-      )}
+        )}
+      </div>
     </div>
   );
 };
