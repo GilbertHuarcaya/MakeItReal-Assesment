@@ -1,20 +1,13 @@
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
-import { getProduct } from '../../services/products';
+import { Rating } from 'react-simple-star-rating';
+import { useStateProduct } from '../Products/Context';
 import './styles.scss';
 import Spinner from '../../imgs/Spin.svg';
 
 const ProductDetail = () => {
   const { productId } = useParams();
-  const [product, setProduct] = useState();
-
-  useEffect(() => {
-    const fetchProduct = async () => {
-      const oneproduct = await getProduct(productId);
-      setProduct(oneproduct);
-    };
-    fetchProduct();
-  }, []);
+  const { products } = useStateProduct();
+  const product = products?.find((prod) => prod.id === Number(productId));
 
   return (
     <main className="ProductDetail">
@@ -23,9 +16,7 @@ const ProductDetail = () => {
           <h3 className="ProductDetail__card__subtitle">
             Category: {product.category}
           </h3>
-
           <h2 className="ProductDetail__card__name">{product.title}</h2>
-
           <div className="ProductDetail__card__photo">
             <img
               className="ProductDetail__card__img"
@@ -41,9 +32,14 @@ const ProductDetail = () => {
             {product.description}
           </p>
           <h3 className="ProductDetail__card__subtitle">Rating:</h3>
-          <p className="ProductDetail__card__description">
-            {product.rating.rate} stars from {product.rating.count} votes
-          </p>
+          <div className="ProductDetail__card__description">
+            <Rating
+              size="1.25rem"
+              initialValue={Math.round(product.rating.rate)}
+              readonly
+            />
+            {product.rating.count} reviews
+          </div>
         </div>
       ) : (
         <img src={Spinner} alt="Spinner" className="Products__loading" />
