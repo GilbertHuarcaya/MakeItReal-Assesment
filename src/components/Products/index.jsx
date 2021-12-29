@@ -6,6 +6,12 @@ import Spinner from '../../imgs/Spin.svg';
 const Products = () => {
   const { products } = useStateProduct();
 
+  if (!localStorage.length && products) {
+    products.forEach((product) => {
+      localStorage.setItem(product.id, Math.floor(Math.random() * 100) + 6);
+    });
+  }
+
   return (
     <div className="Products">
       <h1 className="Products__title">Products</h1>
