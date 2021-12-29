@@ -23,11 +23,20 @@ const Aboutme = () => {
           Temas aprendidos en el programa de Make it Real
         </h3>
         <ul className="About__list">
-          <li>SCRUM</li>
-          <li>REACT</li>
-          <li>CONTEXT</li>
+          <li>
+            ✔ Es importante manejar SCRUM para tener un mejor desempeño laboral.
+          </li>
+          <li>✔ Frontend con REACT y SASS</li>
+          <li>✔ Backend con MongoDB, NodeJS y Express</li>
         </ul>
-        <p className="About__email">Mi correo es: gilberthuarcaya@gmail.com</p>
+        <a
+          className="About__a"
+          href="mailto:gilberthuarcaya@gmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <p className="About__email">gilberthuarcaya@gmail.com</p>
+        </a>
         <a
           className="About__a"
           href="https://github.com/GilbertHuarcaya"
@@ -35,6 +44,7 @@ const Aboutme = () => {
           rel="noopener noreferrer"
         >
           <img className="About__a__img" src={Github} alt="githublink" />
+          <p className="About__email">GilbertHuarcaya</p>
         </a>
       </div>
     </div>
