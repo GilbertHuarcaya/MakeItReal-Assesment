@@ -1,12 +1,5 @@
 import { GET_PRODUCTS, SET_LOADING } from './constants';
 
-/* export const getUserFromLocalStorage = (dispatch) => {
-  const token = localStorage.getItem('token');
-  if (token) {
-    const decoded = jwt_decode(token);
-    dispatch({ type: GET_USER_FROM_LOCALSTORAGE, payload: decoded });
-  }
-}; */
 import { getProducts } from '../services/products';
 
 const getAllProducts = async (dispatch) => {
@@ -14,11 +7,8 @@ const getAllProducts = async (dispatch) => {
   try {
     const response = await getProducts();
 
-    const data = await response.json();
-    localStorage.clear();
-
-    if (response.ok) {
-      dispatch({ type: GET_PRODUCTS, payload: data });
+    if (response) {
+      dispatch({ type: GET_PRODUCTS, payload: response });
     }
   } catch (error) {
     // eslint-disable-next-line no-console

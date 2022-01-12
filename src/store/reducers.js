@@ -1,7 +1,7 @@
 import { GET_PRODUCTS, SET_LOADING, GET_TIMES, SET_TIMES } from './constants';
 
 const initialState = {
-  products: null,
+  products: [],
   loading: false,
   times: {},
 };

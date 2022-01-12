@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
 import { Rating } from 'react-simple-star-rating';
-import { useStateProduct } from '../Products/Context';
+import { useSelector } from 'react-redux';
 import './styles.scss';
 import Spinner from '../../imgs/Spin.svg';
 
 const ProductDetail = () => {
   const { productId } = useParams();
-  const { products } = useStateProduct();
+  const products = useSelector((state) => state.products);
   const product = products?.find((prod) => prod.id === Number(productId));
 
   return (
