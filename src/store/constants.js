@@ -1,0 +1,15 @@
+export const REGISTER_USER = 'register-user';
+export const LOGOUT_USER = 'logout-user';
+export const LOGIN_USER = 'login-user';
+export const GET_USER_FROM_LOCALSTORAGE = 'get-user-from-localstorage';
+export const GET_ALL_SERVICES = 'all-services';
+export const GET_ALL_ORDERS = 'all-orders';
+export const GET_ALL_REVIEWS = 'all-reviews';
+export const POST_USER_REVIEW = 'post-user-reviews';
+export const GET_ORDER = 'get-order';
+export const SET_LOADING = 'loading';
+export const GET_ORDER_FROM_GO_ORDER = 'get-form-from-go-order';
+export const GET_ORDER_FORM = 'get-order-form';
+export const GET_ORDER_FROM_TIEMPO = 'get-form-from-tiempo';
+export const GET_ORDER_FROM_COTIZAR = 'get-form-from-cotizar';
+export const GET_ORDERS_FROM_USER = 'get-orders-from-user';
