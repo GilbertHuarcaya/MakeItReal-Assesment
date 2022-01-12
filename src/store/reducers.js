@@ -1,80 +1,35 @@
-import {
-  LOGIN_USER,
-  SET_LOADING,
-  GET_USER_FROM_LOCALSTORAGE,
-  LOGOUT_USER,
-  REGISTER_USER,
-  GET_ALL_REVIEWS,
-  GET_ORDER_FORM,
-  GET_ORDERS_FROM_USER,
-  POST_USER_REVIEW,
-} from './constants';
+import { GET_PRODUCTS, SET_LOADING, GET_TIMES, SET_TIMES } from './constants';
 
 const initialState = {
-  isLoading: false,
-  services: [],
-  reviews: null,
-  orderDetails: {},
-  orders: [],
-  userOrders: [],
-  user: null,
-  postReviewState: null,
+  products: null,
+  loading: false,
+  times: {},
 };
 
 function reducer(state = initialState, action = '') {
   const newValue = action.payload;
   switch (action.type) {
-    case LOGIN_USER:
+    case GET_PRODUCTS:
       return {
         ...state,
-        user: newValue,
+        products: newValue,
       };
-    case LOGOUT_USER: {
-      return {
-        ...state,
-        user: newValue,
-      };
-    }
-    case REGISTER_USER: {
-      return {
-        ...state,
-        user: newValue,
-      };
-    }
     case SET_LOADING: {
       return {
         ...state,
-        isLoading: newValue,
+        loading: newValue,
       };
     }
-    case GET_USER_FROM_LOCALSTORAGE: {
+    case GET_TIMES: {
       return {
         ...state,
-        user: newValue,
+        times: newValue,
       };
     }
-    case GET_ORDER_FORM: {
+    case SET_TIMES: {
       return {
         ...state,
-        orderDetails: newValue,
-      };
-    }
-    case GET_ALL_REVIEWS: {
-      return {
-        ...state,
-        reviews: newValue,
-      };
-    }
-    case GET_ORDERS_FROM_USER: {
-      return {
-        ...state,
-        userOrders: newValue,
-      };
-    }
-    case POST_USER_REVIEW: {
-      return {
-        ...state,
-        postReviewState: newValue,
+        times: newValue,
       };
     }
     default:
